@@ -32,6 +32,7 @@ problems:
   - name: coro-prime-sieve
     source:
       - 1.nim
+      - 3.nim
   - name: lru
     source:
       - 1.nim
