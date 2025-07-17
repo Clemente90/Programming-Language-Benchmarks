@@ -61,7 +61,7 @@ environments:
     include: nim
     include_sub_dir:
     before_build:
-    build: nimble build app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --passC="-march=native -mtune=native -flto -fwhole-program" --verbose
+    build: nimble build app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --verbose
     after_build:
       - cp app out
     out_dir: out
