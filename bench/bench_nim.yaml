@@ -60,7 +60,7 @@ environments:
     # docker: nimlang/nim
     include: nim
     include_sub_dir:
-    before_build:
+    before_build: nimble install --depsOnly
     build: nimble build app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --verbose
     after_build:
       - cp app out
@@ -72,7 +72,7 @@ environments:
     # docker: nimlang/nim
     include: nim
     include_sub_dir:
-    before_build:
+    before_build: nimble install --depsOnly
     build: nimble build app -y --mm:orc --cc:clang -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --verbose
     after_build:
       - cp app out
