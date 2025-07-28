@@ -34,6 +34,8 @@ problems:
       - 1.nim
       - 3.nim
       - 4.nim
+      - 5.nim
+      - 6.nim
   - name: lru
     source:
       - 1.nim
@@ -60,8 +62,10 @@ environments:
     # docker: nimlang/nim
     include: nim
     include_sub_dir:
-    before_build: nimble install --depsOnly
-    build: nimble build app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --verbose
+    before_build:
+      - nimble refresh
+      - nimble install --depsOnly
+    build: nimble cpp app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --passC=-march=native --passC=-mtune=native --passC=-flto --passC=-fwhole-program --verbose 
     after_build:
       - cp app out
     out_dir: out
@@ -72,8 +76,10 @@ environments:
     # docker: nimlang/nim
     include: nim
     include_sub_dir:
-    before_build: nimble install --depsOnly
-    build: nimble build app -y --mm:orc --cc:clang -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --verbose
+    before_build:
+      - nimble refresh
+      - nimble install --depsOnly
+    build: nimble build app -y --mm:orc --cc:clang -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --verbose 
     after_build:
       - cp app out
     out_dir: out
