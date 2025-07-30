@@ -33,7 +33,6 @@ problems:
     source:
       - 1.nim
       - 3.nim
-      - 4.nim
       - 5.nim
       - 6.nim
   - name: lru
@@ -65,7 +64,7 @@ environments:
     before_build:
       - nimble refresh
       - nimble install --depsOnly
-    build: nimble cpp app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --passC=-march=native --passC=-mtune=native --passC=-flto --passC=-fwhole-program --verbose 
+    build: nimble cpp app -y --mm:orc -d:danger --panics:on -d:nimCoroutines --threads:on --tlsEmulation:off --passC=-march=native --passC=-mtune=native --passC=-flto --passC=-fwhole-program --passC=-ffp-contract=off --verbose 
     after_build:
       - cp app out
     out_dir: out
